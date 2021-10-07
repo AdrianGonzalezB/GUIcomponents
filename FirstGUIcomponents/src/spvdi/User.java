@@ -1,7 +1,7 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package spvdi;
 
@@ -12,70 +12,74 @@ import java.time.LocalDate;
  * @author Alumne
  */
 public class User {
-
-    public int getId() {
-        return id;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public LocalDate getBirthdDate() {
-        return birthdDate;
-    }
-
-    public boolean isIsAlive() {
-        return isAlive;
-    }
-
-    public User(int id, String firstName, String lastName, LocalDate birthdDate, boolean isAlive) {
+ 
+    public User(int id, String name, String surname, int birthDate, String gender, String alive) {
         this.id = id;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.birthdDate = birthdDate;
-        this.isAlive = isAlive;
+        this.name = name;
+        this.surname = surname;
+        this.birthDate = birthDate;
+        this.gender = gender;
+        this.alive = alive;
     }
-
+ 
+    @Override
+    public String toString() {
+        return "id: " + id + ", " + name + " " + surname + ", " + birthDate + ", " + gender + ", " + alive;
+    }
+ 
+    private int id;
+    private String name;
+    private String surname;
+    private int birthDate;
+    private String gender;
+    private String alive;
+ 
     public void setId(int id) {
         this.id = id;
     }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
+ 
+    public void setName(String name) {
+        this.name = name;
     }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+ 
+    public void setSurname(String surname) {
+        this.surname = surname;
     }
-
-    public void setBirthdDate(LocalDate birthdDate) {
-        this.birthdDate = birthdDate;
+ 
+    public void setBirthDate(int birthDate) {
+        this.birthDate = birthDate;
     }
-
-    public void setIsAlive(boolean isAlive) {
-        this.isAlive = isAlive;
-    }
-
-
-    public String getGender() {
-        return gender;
-    }
-
+ 
     public void setGender(String gender) {
         this.gender = gender;
     }
-
-    @Override
-    public String toString() {
-        return "User{" + "id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", gender=" + gender + ", birthdDate=" + birthdDate + ", isAlive=" + isAlive + '}';
+ 
+    public void setAlive(String alive) {
+        this.alive = alive;
     }
-    private int id;
-    private String firstName, lastName, gender;
-    private LocalDate birthdDate;
-    private boolean isAlive;
+ 
+    public int getId() {
+        return id;
+    }
+ 
+    public String getName() {
+        return name;
+    }
+ 
+    public String getSurname() {
+        return surname;
+    }
+ 
+    public int getBirthDate() {
+        return birthDate;
+    }
+ 
+    public String getGender() {
+        return gender;
+    }
+ 
+    public String isAlive() {
+        return alive;
+    }
+ 
 }
