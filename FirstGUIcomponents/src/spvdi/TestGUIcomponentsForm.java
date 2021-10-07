@@ -5,7 +5,15 @@
  */
 package spvdi;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -14,6 +22,12 @@ import java.time.LocalDate;
 public class TestGUIcomponentsForm extends javax.swing.JFrame {
      String result = "";
      int id = 0;
+     final static String fileName = "src/users.txt";
+     ArrayList<User> user = new ArrayList<>();
+     FileReader file ;
+     BufferedReader br;
+     FileWriter filew;
+     BufferedWriter bw;
 
     /**
      * Creates new form TestGUIcomponentsForm
@@ -113,6 +127,11 @@ public class TestGUIcomponentsForm extends javax.swing.JFrame {
         });
 
         btnSave.setText("Save");
+        btnSave.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSaveActionPerformed(evt);
+            }
+        });
 
         btnLoad.setText("Load");
         btnLoad.addActionListener(new java.awt.event.ActionListener() {
@@ -236,9 +255,38 @@ public class TestGUIcomponentsForm extends javax.swing.JFrame {
 
     private void btnLoadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoadActionPerformed
         // TODO add your handling code here:
+        load();
     }//GEN-LAST:event_btnLoadActionPerformed
 
-    private void save() {}
+    private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_btnSaveActionPerformed
+
+    private void save()   {
+         try {
+             filew = new FileWriter(fileName);
+             bw = new BufferedWriter(filew);
+             txaInfo.getText();
+         } catch (IOException ex) {
+             Logger.getLogger(TestGUIcomponentsForm.class.getName()).log(Level.SEVERE, null, ex);
+         }
+         
+    }
+    
+    private void load() {
+    try {
+             file = new FileReader(fileName);
+             br = new BufferedReader(file);
+             String line = br.readLine();
+             while (line != null)
+                 txaInfo.setText(txaInfo.getText() + line + "\n" );
+             line = br.readLine();
+             br.close();
+         } catch (IOException ex) {
+             Logger.getLogger(TestGUIcomponentsForm.class.getName()).log(Level.SEVERE, null, ex);
+         } 
+    }
     /**
      * @param args the command line arguments
      */
