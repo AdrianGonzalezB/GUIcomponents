@@ -111,7 +111,7 @@ public class TestGUIcomponentsForm extends javax.swing.JFrame {
             }
         });
 
-        txtBirthDate.setToolTipText("yyyy");
+        txtBirthDate.setToolTipText("yyyy-mm-dd");
 
         lblGender.setText("Gender:");
 
@@ -127,6 +127,7 @@ public class TestGUIcomponentsForm extends javax.swing.JFrame {
         });
 
         btnSave.setText("Save");
+        btnSave.setToolTipText("Save file");
         btnSave.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSaveActionPerformed(evt);
@@ -134,6 +135,7 @@ public class TestGUIcomponentsForm extends javax.swing.JFrame {
         });
 
         btnLoad.setText("Load");
+        btnLoad.setToolTipText("Load file");
         btnLoad.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnLoadActionPerformed(evt);
@@ -260,14 +262,16 @@ public class TestGUIcomponentsForm extends javax.swing.JFrame {
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
         // TODO add your handling code here:
-        
+        save();
     }//GEN-LAST:event_btnSaveActionPerformed
 
     private void save()   {
          try {
              filew = new FileWriter(fileName);
              bw = new BufferedWriter(filew);
-             txaInfo.getText();
+             String line = txaInfo.getText();
+             bw.write(line);
+             bw.close();
          } catch (IOException ex) {
              Logger.getLogger(TestGUIcomponentsForm.class.getName()).log(Level.SEVERE, null, ex);
          }
@@ -279,9 +283,10 @@ public class TestGUIcomponentsForm extends javax.swing.JFrame {
              file = new FileReader(fileName);
              br = new BufferedReader(file);
              String line = br.readLine();
-             while (line != null)
-                 txaInfo.setText(txaInfo.getText() + line + "\n" );
-             line = br.readLine();
+             while (line != null) {
+                txaInfo.setText(txaInfo.getText() + line + "\n" );
+                line = br.readLine();
+             }
              br.close();
          } catch (IOException ex) {
              Logger.getLogger(TestGUIcomponentsForm.class.getName()).log(Level.SEVERE, null, ex);
